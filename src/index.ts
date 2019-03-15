@@ -100,7 +100,7 @@ function divide(num1: number, num2: number, ...others: number[]): number {
 }
 
 /**
- * 四舍五入
+ * 取模
  */
 function mod(num1: number, num2: number): number {
   let len1 = 0, len2 = 0, m = 1;

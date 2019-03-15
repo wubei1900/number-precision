@@ -102,6 +102,28 @@ function divide(num1: number, num2: number, ...others: number[]): number {
 /**
  * 四舍五入
  */
+function mod(num1: number, num2: number): number {
+  let len1 = 0, len2 = 0, m = 1;
+  let num1Changed = float2Fixed(num1);
+  let num2Changed = float2Fixed(num2);
+  len1 = digitLength(num1);
+  len2 = digitLength(num2);
+  const v = Math.pow(10, Math.abs(len1 - len2));
+  if (len1 > len2) {
+      num2Changed *= v;
+  }
+  if (len1 < len2) {
+      num1Changed *= v;
+  }
+  checkBoundary(num1Changed);
+  checkBoundary(num2Changed);
+  m = Math.pow(10, Math.max(len1, len2));
+  return (num1Changed % num2Changed) / m;
+}
+
+/**
+ * 四舍五入
+ */
 function round(num: number, ratio: number): number {
   const base = Math.pow(10, ratio);
   return divide(Math.round(times(num, base)), base);
